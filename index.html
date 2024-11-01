@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Heróis</h1>
+    <button id="btn-new-hero">Cadastrar herói</button>
+    <dialog id="dialog-heroes">
+        <button id="btn-close-dialog-heroes">X</button>
+
+        <label for="in-real-name">Nome verdadeiro</label>
+        <input type="text" id="in-real-name" name="in-real-name"> <br>
+        <label for="in-name">Nome de herói</label>
+        <input type="text" id="in-name" name="in-name"> <br>
+        <p>Sexo</p>
+        <input type="radio" id="in-male" name="in-sex" value="male">
+        <label for="in-male">Masculino</label>
+        <input type="radio" id="in-female" name="in-sex" value="female">
+        <label for="in-female">Feminino</label> <br>
+        <label for="in-height">Altura</label>
+        <input type="number" id="in-height" name="in-height">
+        <label for="in-weigth">Peso</label>
+        <input type="number" id="in-weigth" name="in-weigth"> <br>
+        <label for="in-birth-date">Data de nascimento</label>
+        <input type="date" id="in-birth-date" name="in-birth-date">
+        <label for="in-birth-place">Local de nascimento</label>
+        <input type="text" id="in-birth-place" name="in-birth-place"> <br>
+        <!-- Lista de poderes -->
+        <label for="in-power-level">Nível de poder</label>
+        <input type="range" id="in-power-level" name="in-power-level"> <br>
+        <label for="in-popularity">Popularidade</label>
+        <input type="range" id="in-popularity" name="in-popularity"> <br>
+        <label for="in-status">Status</label>
+        <select name="in-status" id="in-status">
+            <option value="active">Ativo</option>
+            <option value="inactive">Inativo</option>
+            <option value="banned">Banido</option>
+        </select> <br>
+        <!-- Histórico de batalhas -->
+
+        <button id="btn-submit-hero">Cadastrar</button>
+    </dialog>
+    <script src="js/index.js"></script>
+</body>
+</html>
