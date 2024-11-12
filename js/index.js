@@ -39,7 +39,7 @@ function submitHero() {
         "birth-place": inBirthPlace.value
     }
 
-    alert(hero.name)
+    alert(hero["name"])
 
 }
 

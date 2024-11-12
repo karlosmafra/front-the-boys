@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/crimes.css">
+    <title>Crimes</title>
+</head>
+<body>
+    <h1> Registro de Crimes </h1>
+    <button id="btn-new-crime">Registrar crime</button>
+    <dialog id="dialog-crimes"> 
+
+        <button id="btn-close-dialog-crimes" class="btn-close">X</button>
+
+        <label for="in-crime-name">Nome do crime</label>
+        <input type="text" id="in-crime-name" name="in-crime-name"> <br>
+        <label for="in-crime-desc">Descrição</label>
+        <input type="text" id="in-crime-desc" name="in-crime-desc"> <br>
+        <label for="in-crime-date">Data do crime</label>
+        <input type="date" id="in-crime-date" name="in-crime-date"> <br>
+        <label for="in-crime-hero">Herói responsável</label>
+        <input type="text" id="in-crime-hero" name="in-crime-hero"> <br>
+        <label for="in-crime-level">Severidade do crime</label>
+        <input type="range" id="in-crime-level" name="in-crime-level" min="1" max="10" value="1"> 
+        <span id="crime-level-value">1</span> <br> <br>
+
+        <button id="btn-submit-crime">Registrar</button>
+
+    </dialog>
+
+    <script src="../js/crimes.js"></script>
+</body>
+</html>
