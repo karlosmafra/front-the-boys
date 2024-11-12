@@ -23,14 +23,14 @@ inCrimeLevel.addEventListener("input", (event) => {
 function submitCrime() {
 
     let crime = {
-        "crime-name": inCrimeName.value,
-        "crime-desc": inCrimeDesc.value,
-        "crime-date": inCrimeDate.value,
-        "crime-hero": inCrimeHero.value,
-        "crime-level": inCrimeLevel.value,
+        "name": inCrimeName.value,
+        "desc": inCrimeDesc.value,
+        "date": inCrimeDate.value,
+        "hero": inCrimeHero.value,
+        "level": inCrimeLevel.value,
     }
 
-    alert(crime["crime-name"])
+    alert(crime["name"])
 
 }
 
