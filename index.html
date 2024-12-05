@@ -17,6 +17,29 @@
     <h1>Heróis</h1>
     <button id="btn-new-hero">Cadastrar herói</button>
 
+    <table id="table-heroes">
+        <thead>
+            <tr>
+                <th>Nome verdadeiro</th>
+                <th>Nome de herói</th>
+                <th>Sexo</th>
+                <th>Altura</th>
+                <th>Peso</th>
+                <th>Data de nascimento</th>
+                <th>Local de nascimento</th>
+                <th>Nível de força</th>
+                <th>Popularidade</th>
+                <th>Status</th>
+                <th>Poderes</th>
+                <th>Histórico de batalhas</th>
+            </tr>
+        </thead>
+        <tbody id="list-heroes">
+            <!-- Os heróis serão inseridos aqui -->
+        </tbody>
+    </table>    
+    </div>
+
     <dialog id="dialog-heroes">
 
         <button id="btn-close-dialog-heroes" class="btn-close">X</button>
@@ -38,7 +61,6 @@
         <input type="date" id="in-birth-date" name="in-birth-date"> <br>
         <label for="in-birth-place">Local de nascimento</label>
         <input type="text" id="in-birth-place" name="in-birth-place"> <br>
-        <!-- Lista de poderes -->
         <label for="in-power-level">Nível de poder</label>
         <input type="range" id="in-power-level" name="in-power-level" min="0" max="100" value="50">
         <span id="power-value">50</span> <br>
@@ -51,6 +73,7 @@
             <option value="inactive">Inativo</option>
             <option value="banned">Banido</option>
         </select> <br>
+        <!-- Lista de poderes -->
         <!-- Histórico de batalhas -->
 
         <button id="btn-submit-hero">Cadastrar</button>

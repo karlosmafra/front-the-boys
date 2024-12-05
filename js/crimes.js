@@ -20,7 +20,7 @@ inCrimeLevel.addEventListener("input", (event) => {
 })
 
 
-function submitCrime() {
+async function submitCrime() {
 
     let crime = {
         "name": inCrimeName.value,
@@ -30,7 +30,17 @@ function submitCrime() {
         "level": inCrimeLevel.value,
     }
 
-    alert(crime["name"])
+    /*
+    fetch('http://localhost:3000/crimes', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            nome: inCrimeName.value,
+        })
+    })    
+    */
 
 }
 
