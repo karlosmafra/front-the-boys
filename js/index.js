@@ -1,8 +1,11 @@
 const btnNewHero = document.getElementById("btn-new-hero")
 const dialogHeroes = document.getElementById("dialog-heroes")
 
+/*
 const listHeroes = document.getElementById("list-heroes")
 let heroes = JSON.parse(localStorage.getItem("register")) || [];
+let registerLocalStorage = getRegisterLocalStorage()
+*/
 
 const btnCloseDialogHeroes = document.getElementById("btn-close-dialog-heroes")
 const btnSubmitHero = document.getElementById("btn-submit-hero")
@@ -17,8 +20,6 @@ const inPowerLevel = document.getElementById("in-power-level")
 const powerValue = document.getElementById("power-value")
 const inPopularity = document.getElementById("in-popularity")
 const popularityValue = document.getElementById("popularity-value")
-
-let registerLocalStorage = getRegisterLocalStorage()
 
 btnNewHero.addEventListener('click', openDialogHeroes)
 btnCloseDialogHeroes.addEventListener("click", ()=> dialogHeroes.close())
@@ -42,12 +43,12 @@ async function submitHero() {
 
     // Local storage
     let hero = {
-      "real-name": inRealName.value,
+      "real_name": inRealName.value,
       "name": inName.value,
       "height": inHeight.value,
       "weigth": inWeigth.value,
-      "birth-date": inBirthDate.value,
-      "birth-place": inBirthPlace.value
+      "birth_date": inBirthDate.value,
+      "birth_place": inBirthPlace.value
     }
 
     saveRegisterLocalStorage(hero)
@@ -77,27 +78,41 @@ async function submitHero() {
   })
 
   dialogHeroes.close()
+  //getHeroesLocal()
 
 }
 
 async function getHeroes() {
   
+}
+
+// Teste com dados no local storage
+/*
+function getHeroesLocal() {
+  
   listHeroes.innerHTML = ""
 
   heroes.forEach((hero, index) => {
-    const linha = document.createElement("tr");
+    const linha = document.createElement("tr")
     linha.innerHTML = `
-        <td>${hero.real-name}</td>
+        <td>${hero.real_name}</td>
         <td>${hero.name}</td>
+        <td> "sex" </td>
         <td>${hero.height}</td>
         <td>${hero.weigth || ''}</td>
-        <td>${hero.birth-date || ''}</td>
-        <td>${hero.birth-place || ''}</td>
+        <td>${hero.birth_date || ''}</td>
+        <td>${hero.birth_place || ''}</td>
+        <td> "" </td>
+        <td> "" </td>
+        <td> "" </td>
+        <td> "" </td>
+        <td> "" </td>
         `
-    listHeroes.appendChild(linha);
-});
+    listHeroes.appendChild(linha)
+})
 
 }
+
 
 function saveRegisterLocalStorage(register) {
 
@@ -117,4 +132,7 @@ function getRegisterLocalStorage(register) {
 
 }
 
-getHeroes()
+getHeroesLocal()
+
+*/ 
+
