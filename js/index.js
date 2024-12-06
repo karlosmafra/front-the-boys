@@ -20,6 +20,7 @@ const inPowerLevel = document.getElementById("in-power-level")
 const powerValue = document.getElementById("power-value")
 const inPopularity = document.getElementById("in-popularity")
 const popularityValue = document.getElementById("popularity-value")
+const inStatus = document.getElementById("in-status")
 
 btnNewHero.addEventListener('click', openDialogHeroes)
 btnCloseDialogHeroes.addEventListener("click", ()=> dialogHeroes.close())
@@ -41,6 +42,7 @@ function openDialogHeroes() {
 
 async function submitHero() {
 
+  /*
     // Local storage
     let hero = {
       "real_name": inRealName.value,
@@ -48,11 +50,12 @@ async function submitHero() {
       "height": inHeight.value,
       "weigth": inWeigth.value,
       "birth_date": inBirthDate.value,
-      "birth_place": inBirthPlace.value
+      "birth_place": inBirthPlace.value,
+      "power_level": inPowerLevel.value,
     }
 
     saveRegisterLocalStorage(hero)
-    
+  */
 
   fetch('http://localhost:8000/herois', {
     method: 'POST',
@@ -70,9 +73,10 @@ async function submitHero() {
       data_nascimento: inBirthDate.value,
       nome_real: inRealName.value,
       local_nascimento: inBirthPlace.value,
+      nivel_de_forca: inPowerLevel.value,
+      // popularidade: inPopularity.value,
+      status: inStatus.value,
       // fk_poderes_poderes_pk
-      nivel_de_forca: 1, /* TO-DO */
-      status: "", /* TO-DO */
       // fk_historico_de_batalhas_pk
     })
   })
