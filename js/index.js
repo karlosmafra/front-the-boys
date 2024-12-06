@@ -106,6 +106,38 @@ async function submitHero() {
 // Recuperar heróis e mostrar na tabela
 async function getHeroes() {
   
+  fetch('http://localhost:8000/herois')
+  .then((metadata) => {
+    console.log("Sucesso!")
+    console.log(metadata)
+    return metadata.json()
+  })
+  .then((data) => {
+    console.log(data);
+    data.forEach(heroi => {
+      console.log(heroi)
+      const linha = document.createElement("tr")
+      linha.innerHTML = `
+        <td>${heroi.nome_real || ''}</td>
+        <td>${heroi.nome}</td>
+        <td>${heroi.sexo || ''}</td>
+        <td>${heroi.altura || ''}</td>
+        <td>${heroi.peso || ''}</td>
+        <td>${heroi.data_nascimento  || ''}</td>
+        <td>${heroi.local_nascimento  || ''}</td>
+        <td>${heroi.nivel_de_forca}</td>
+        <td> "popularidade" </td>
+        <td>${heroi.status}</td>
+        <td> "poderes" </td>
+        <td> "batalhas" </td>
+      `
+    listHeroes.appendChild(linha)
+    })
+  })
+  .catch(error => {
+    console.log(error)
+  });
+
 }
 
 function verifyInputs() {
@@ -119,20 +151,6 @@ function verifyInputs() {
     alert("A altura e o peso devem ser números válidos")
     return false
   }
-
-  /*
-  const inRealName = document.getElementById("in-real-name")
-  const inName = document.getElementById("in-name")
-  const inHeight = document.getElementById("in-height")
-  const inWeigth = document.getElementById("in-weigth")
-  const inBirthDate = document.getElementById("in-birth-date")
-  const inBirthPlace = document.getElementById("in-birth-place")
-  const inPowerLevel = document.getElementById("in-power-level")
-  const powerValue = document.getElementById("power-value")
-  const inPopularity = document.getElementById("in-popularity")
-  const popularityValue = document.getElementById("popularity-value")
-  const inStatus = document.getElementById("in-status") 
-  */
 
   return true
 
