@@ -36,6 +36,19 @@ inPopularity.addEventListener("input", (event) => {
 
 function openDialogHeroes() {
 
+  // Limpar inputs
+  inRealName.value = ""
+  inName.value = ""
+  inHeight.value = ""
+  inWeigth.value = ""
+  inBirthDate.value = ""
+  inBirthPlace.value = ""
+  inPowerLevel.value = 50
+  powerValue.textContent = 50
+  inPopularity.value = 50
+  popularityValue.textContent = 50
+  inStatus.value = "ativo"
+
   dialogHeroes.showModal()
 
 }
@@ -57,37 +70,72 @@ async function submitHero() {
     saveRegisterLocalStorage(hero)
   */
 
-  fetch('http://localhost:8000/herois', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      nome: inRealName.value,
-      alias: inName.value,
-      descricao: "", /* TO-DO */
-      cidade: "", /* TO-DO */
-      altura: inHeight.value,
-      sexo: "", /* TO-DO */
-      peso: inWeigth.value,
-      data_nascimento: inBirthDate.value,
-      nome_real: inRealName.value,
-      local_nascimento: inBirthPlace.value,
-      nivel_de_forca: inPowerLevel.value,
-      // popularidade: inPopularity.value,
-      status: inStatus.value,
-      // fk_poderes_poderes_pk
-      // fk_historico_de_batalhas_pk
-    })
-  })
+  if (verifyInputs()) {
 
-  dialogHeroes.close()
-  //getHeroesLocal()
+    fetch('http://localhost:8000/herois', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        nome_real: inRealName.value,
+        nome: inName.value,
+        descricao: "", /* TO-DO */
+        cidade: "", /* TO-DO */
+        altura: inHeight.value,
+        sexo: "", /* TO-DO */
+        peso: inWeigth.value,
+        data_nascimento: inBirthDate.value,
+        nome_real: inRealName.value,
+        local_nascimento: inBirthPlace.value,
+        nivel_de_forca: inPowerLevel.value,
+        // popularidade: inPopularity.value,
+        status: inStatus.value,
+        // fk_poderes_poderes_pk
+        // fk_historico_de_batalhas_pk
+      })
+    })
+
+    dialogHeroes.close()
+    //getHeroesLocal()
+
+  }
 
 }
 
+// Recuperar heróis e mostrar na tabela
 async function getHeroes() {
   
+}
+
+function verifyInputs() {
+
+  if (inRealName.value == "" || inName.value == "" || inBirthPlace.value == "") {
+    alert("Todos os campos devem ser preenchidos")
+    return false
+  }
+
+  if (inHeight.value == "" || inWeigth.value == "") {
+    alert("A altura e o peso devem ser números válidos")
+    return false
+  }
+
+  /*
+  const inRealName = document.getElementById("in-real-name")
+  const inName = document.getElementById("in-name")
+  const inHeight = document.getElementById("in-height")
+  const inWeigth = document.getElementById("in-weigth")
+  const inBirthDate = document.getElementById("in-birth-date")
+  const inBirthPlace = document.getElementById("in-birth-place")
+  const inPowerLevel = document.getElementById("in-power-level")
+  const powerValue = document.getElementById("power-value")
+  const inPopularity = document.getElementById("in-popularity")
+  const popularityValue = document.getElementById("popularity-value")
+  const inStatus = document.getElementById("in-status") 
+  */
+
+  return true
+
 }
 
 // Teste com dados no local storage
