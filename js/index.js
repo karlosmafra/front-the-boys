@@ -12,6 +12,9 @@ const btnSubmitHero = document.getElementById("btn-submit-hero")
 
 const inRealName = document.getElementById("in-real-name")
 const inName = document.getElementById("in-name")
+const inMale = document.getElementById('in-male')
+const inFemale = document.getElementById('in-female')
+let selectedSex = document.querySelector('input[name="in-sex"]:checked')
 const inHeight = document.getElementById("in-height")
 const inWeigth = document.getElementById("in-weigth")
 const inBirthDate = document.getElementById("in-birth-date")
@@ -39,6 +42,8 @@ function openDialogHeroes() {
   // Limpar inputs
   inRealName.value = ""
   inName.value = ""
+  inMale.checked = false
+  inFemale.checked = false
   inHeight.value = ""
   inWeigth.value = ""
   inBirthDate.value = ""
@@ -83,7 +88,7 @@ async function submitHero() {
         descricao: "", /* TO-DO */
         cidade: "", /* TO-DO */
         altura: inHeight.value,
-        sexo: "", /* TO-DO */
+        sexo: selectedSex.value,
         peso: inWeigth.value,
         data_nascimento: inBirthDate.value,
         nome_real: inRealName.value,
@@ -142,7 +147,9 @@ async function getHeroes() {
 
 function verifyInputs() {
 
-  if (inRealName.value == "" || inName.value == "" || inBirthPlace.value == "") {
+  selectedSex = document.querySelector('input[name="in-sex"]:checked') 
+
+  if (inRealName.value == "" || inName.value == "" || inBirthPlace.value == "" || !selectedSex) {
     alert("Todos os campos devem ser preenchidos")
     return false
   }
