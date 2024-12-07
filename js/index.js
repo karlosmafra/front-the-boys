@@ -175,22 +175,31 @@ function renderHeroes(data) {
   renderHeroes(sortedData)
 }
 
- // Função para filtrar heróis baseado na busca
- function filterHeroes() {
-  
-  const nameSearch = document.getElementById('search-name').value.toLowerCase()
-  const statusSearch = document.getElementById('search-status').value.toLowerCase()
-  const popularitySearch = document.getElementById('search-popularity').value.toLowerCase()
+// Função para filtrar heróis baseado na busca
+function filterHeroes() {
 
-  const filteredHeroes = heroesData.filter(heroi => {
-      return (
-          heroi.nome.toLowerCase().includes(nameSearch) &&
-          heroi.status.toLowerCase().includes(statusSearch) &&
-          (heroi.popularidade || '').toString().toLowerCase().includes(popularitySearch)
-      )
-  })
+  const searchName = document.getElementById("search-name").value.toLowerCase()
+  const searchStatus = document.getElementById("search-status").value.toLowerCase()
+  const searchPopularity = document.getElementById("search-popularity").value
 
-  renderHeroes(filteredHeroes);
+  const rows = document.querySelectorAll("#table-heroes tbody tr")
+
+  rows.forEach(row => {
+    const nomeReal = row.cells[0].textContent.toLowerCase()
+    const nomeHeroi = row.cells[1].textContent.toLowerCase()
+    const status = row.cells[9].textContent.toLowerCase()
+    const popularidade = row.cells[8].textContent
+
+    const matchesName = nomeReal.includes(searchName) || nomeHeroi.includes(searchName)
+    const matchesStatus = status.includes(searchStatus)
+    const matchesPopularity = popularidade.includes(searchPopularity)
+
+    if (matchesName && matchesStatus && matchesPopularity) {
+      row.style.display = ""
+    } else {
+      row.style.display = "none"
+    }
+  });
 }
 
 function verifyInputs() {

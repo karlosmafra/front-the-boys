@@ -17,12 +17,17 @@
     <h1>Heróis</h1>
     <button id="btn-new-hero">Cadastrar herói</button> <br>
 
-    <label for="search-name">Buscar por nome:</label>
-    <input type="text" id="search-name" oninput="filterHeroes()">
-    <label for="search-status">Buscar por status:</label>
-    <input type="text" id="search-status" oninput="filterHeroes()">
-    <label for="search-popularity">Buscar por popularidade:</label>
-    <input type="text" id="search-popularity" oninput="filterHeroes()"><br>
+    <label for="search-name" class="label-search">Buscar por nome:</label>
+    <label for="search-status" class="label-search">Buscar por status:</label>
+    <label for="search-popularity" class="label-search">Buscar por popularidade:</label> <br>
+    <input type="text" id="search-name" class="input-search" oninput="filterHeroes()">
+    <select id="search-status" class="input-search" oninput="filterHeroes()">
+        <option value="">Todos</option>
+        <option value="ativo">Ativo</option>
+        <option value="inativo">Inativo</option>
+        <option value="banido">Banido</option>
+    </select>
+    <input type="text" id="search-popularity" class="input-search" oninput="filterHeroes()"><br>
 
     <table id="table-heroes">
         <thead>
@@ -55,11 +60,11 @@
         <input type="text" id="in-real-name" name="in-real-name" class="input"> <br>
         <label for="in-name">Nome de herói</label>
         <input type="text" id="in-name" name="in-name" class="input"> <br>
-        <p>Sexo</p>
+        <p id="sex-p">Sexo</p>
         <input type="radio" id="in-male" name="in-sex" value="masculino">
-        <label for="in-male">Masculino</label>
+        <label for="in-male" class="sex-label">Masculino</label>
         <input type="radio" id="in-female" name="in-sex" value="feminino">
-        <label for="in-female">Feminino</label> <br>
+        <label for="in-female" class="sex-label">Feminino</label> <br>
         <label for="in-height">Altura</label>
         <input type="number" id="in-height" name="in-height" class="input">
         <label for="in-weigth">Peso</label>
