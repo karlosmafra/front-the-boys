@@ -1,11 +1,9 @@
 const btnNewHero = document.getElementById("btn-new-hero")
 const dialogHeroes = document.getElementById("dialog-heroes")
 
-/*
 const listHeroes = document.getElementById("list-heroes")
 let heroes = JSON.parse(localStorage.getItem("register")) || [];
 let registerLocalStorage = getRegisterLocalStorage()
-*/
 
 const btnCloseDialogHeroes = document.getElementById("btn-close-dialog-heroes")
 const btnSubmitHero = document.getElementById("btn-submit-hero")
@@ -61,23 +59,24 @@ function openDialogHeroes() {
 }
 
 async function submitHero() {
+  
+  if (verifyInputs()) {
 
-  /*
     // Local storage
     let hero = {
       "real_name": inRealName.value,
       "name": inName.value,
+      "sex": selectedSex.value,
       "height": inHeight.value,
       "weigth": inWeigth.value,
       "birth_date": inBirthDate.value,
       "birth_place": inBirthPlace.value,
       "power_level": inPowerLevel.value,
+      "popularity": inPopularity.value,
+      "status": inStatus.value
     }
 
     saveRegisterLocalStorage(hero)
-  */
-
-  if (verifyInputs()) {
 
     fetch('http://localhost:8000/herois', {
       method: 'POST',
@@ -104,7 +103,7 @@ async function submitHero() {
     })
 
     dialogHeroes.close()
-    //getHeroesLocal()
+    getHeroesLocal()
 
   }
 
@@ -191,7 +190,7 @@ function filterHeroes() {
     const popularidade = row.cells[8].textContent
 
     const matchesName = nomeReal.includes(searchName) || nomeHeroi.includes(searchName)
-    const matchesStatus = status.includes(searchStatus)
+    const matchesStatus = status == searchStatus || searchStatus == ""
     const matchesPopularity = popularidade.includes(searchPopularity)
 
     if (matchesName && matchesStatus && matchesPopularity) {
@@ -223,7 +222,7 @@ function verifyInputs() {
 getHeroes()
 
 // Teste com dados no local storage
-/*
+
 function getHeroesLocal() {
   
   listHeroes.innerHTML = ""
@@ -231,16 +230,16 @@ function getHeroesLocal() {
   heroes.forEach((hero, index) => {
     const linha = document.createElement("tr")
     linha.innerHTML = `
-        <td>${hero.real_name}</td>
+        <td>${hero.real_name || ''}</td>
         <td>${hero.name}</td>
-        <td> "sex" </td>
+        <td>${hero.sex || ''}</td>
         <td>${hero.height}</td>
         <td>${hero.weigth || ''}</td>
         <td>${hero.birth_date || ''}</td>
         <td>${hero.birth_place || ''}</td>
-        <td> "" </td>
-        <td> "" </td>
-        <td> "" </td>
+        <td>${hero.power_level}</td>  
+        <td>${hero.popularity}</td>
+        <td>${hero.status}</td>
         <td> "" </td>
         <td> "" </td>
         `
@@ -270,5 +269,5 @@ function getRegisterLocalStorage(register) {
 
 getHeroesLocal()
 
-*/ 
+
 
