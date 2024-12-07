@@ -25,6 +25,8 @@ const inPopularity = document.getElementById("in-popularity")
 const popularityValue = document.getElementById("popularity-value")
 const inStatus = document.getElementById("in-status")
 
+let heroesData = []; // Para armazenar os dados dos heróis
+
 btnNewHero.addEventListener('click', openDialogHeroes)
 btnCloseDialogHeroes.addEventListener("click", ()=> dialogHeroes.close())
 btnSubmitHero.addEventListener("click", submitHero)
@@ -118,31 +120,77 @@ async function getHeroes() {
     return metadata.json()
   })
   .then((data) => {
-    console.log(data);
-    data.forEach(heroi => {
-      console.log(heroi)
-      const linha = document.createElement("tr")
-      linha.innerHTML = `
-        <td>${heroi.nome_real || ''}</td>
-        <td>${heroi.nome}</td>
-        <td>${heroi.sexo || ''}</td>
-        <td>${heroi.altura || ''}</td>
-        <td>${heroi.peso || ''}</td>
-        <td>${heroi.data_nascimento  || ''}</td>
-        <td>${heroi.local_nascimento  || ''}</td>
-        <td>${heroi.nivel_de_forca}</td>
-        <td> "popularidade" </td>
-        <td>${heroi.status}</td>
-        <td> "poderes" </td>
-        <td> "batalhas" </td>
-      `
-    listHeroes.appendChild(linha)
-    })
+    console.log(data)
+    heroesData = data
+    renderHeroes(data)
   })
   .catch(error => {
     console.log(error)
   });
 
+}
+
+// Função para renderizar os heróis na tabela
+function renderHeroes(data) {
+  const listHeroes = document.getElementById('listHeroes')
+  listHeroes.innerHTML = '' // Limpa a tabela antes de renderizar novamente
+  data.forEach(heroi => {
+      const linha = document.createElement("tr")
+      linha.innerHTML = `
+          <td>${heroi.nome_real || ''}</td>
+          <td>${heroi.nome}</td>
+          <td>${heroi.sexo || ''}</td>
+          <td>${heroi.altura || ''}</td>
+          <td>${heroi.peso || ''}</td>
+          <td>${heroi.data_nascimento || ''}</td>
+          <td>${heroi.local_nascimento || ''}</td>
+          <td>${heroi.nivel_de_forca}</td>
+          <td>${heroi.popularidade || ''}</td>
+          <td>${heroi.status}</td>
+          <td>${heroi.poderes || ''}</td>
+          <td>${heroi.batalhas || ''}</td>
+      `
+      listHeroes.appendChild(linha)
+  });
+}
+
+ // Função para ordenar a tabela
+ function sortTable(columnIndex) {
+
+  const sortedData = [...heroesData]
+  const header = document.querySelectorAll('th')[columnIndex]
+  const isNumeric = columnIndex === 3 || columnIndex === 4 || columnIndex === 7 || columnIndex === 8 // Altura, Peso, Força, Popularidade (numéricos)
+
+  sortedData.sort((a, b) => {
+    const aValue = a[header.textContent.toLowerCase().replace(/ /g, "_")] || ''
+    const bValue = b[header.textContent.toLowerCase().replace(/ /g, "_")] || ''
+
+    if (isNumeric) {
+      return parseFloat(aValue) - parseFloat(bValue)
+    } else {
+      return aValue.localeCompare(bValue)
+    }
+  })
+
+  renderHeroes(sortedData)
+}
+
+ // Função para filtrar heróis baseado na busca
+ function filterHeroes() {
+  
+  const nameSearch = document.getElementById('search-name').value.toLowerCase()
+  const statusSearch = document.getElementById('search-status').value.toLowerCase()
+  const popularitySearch = document.getElementById('search-popularity').value.toLowerCase()
+
+  const filteredHeroes = heroesData.filter(heroi => {
+      return (
+          heroi.nome.toLowerCase().includes(nameSearch) &&
+          heroi.status.toLowerCase().includes(statusSearch) &&
+          (heroi.popularidade || '').toString().toLowerCase().includes(popularitySearch)
+      )
+  })
+
+  renderHeroes(filteredHeroes);
 }
 
 function verifyInputs() {
@@ -162,6 +210,8 @@ function verifyInputs() {
   return true
 
 }
+
+getHeroes()
 
 // Teste com dados no local storage
 /*

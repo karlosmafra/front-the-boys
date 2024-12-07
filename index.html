@@ -15,23 +15,30 @@
     </nav>
     
     <h1>Heróis</h1>
-    <button id="btn-new-hero">Cadastrar herói</button>
+    <button id="btn-new-hero">Cadastrar herói</button> <br>
+
+    <label for="search-name">Buscar por nome:</label>
+    <input type="text" id="search-name" oninput="filterHeroes()">
+    <label for="search-status">Buscar por status:</label>
+    <input type="text" id="search-status" oninput="filterHeroes()">
+    <label for="search-popularity">Buscar por popularidade:</label>
+    <input type="text" id="search-popularity" oninput="filterHeroes()"><br>
 
     <table id="table-heroes">
         <thead>
             <tr>
-                <th>Nome verdadeiro</th>
-                <th>Nome de herói</th>
-                <th>Sexo</th>
-                <th>Altura</th>
-                <th>Peso</th>
-                <th>Data de nascimento</th>
-                <th>Local de nascimento</th>
-                <th>Nível de força</th>
-                <th>Popularidade</th>
-                <th>Status</th>
+                <th onclick="sortTable(0)">Nome Real</th>
+                <th onclick="sortTable(1)">Nome</th>
+                <th onclick="sortTable(2)">Sexo</th>
+                <th onclick="sortTable(3)">Altura</th>
+                <th onclick="sortTable(4)">Peso</th>
+                <th onclick="sortTable(5)">Data de Nascimento</th>
+                <th onclick="sortTable(6)">Local de Nascimento</th>
+                <th onclick="sortTable(7)">Nível de Força</th>
+                <th onclick="sortTable(8)">Popularidade</th>
+                <th onclick="sortTable(9)">Status</th>
                 <th>Poderes</th>
-                <th>Histórico de batalhas</th>
+                <th>Batalhas</th>
             </tr>
         </thead>
         <tbody id="list-heroes">
