@@ -38,126 +38,45 @@ h1 {
     font-size: 2em;
 }
 
-label, #sex-p {
+div {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+label {
     font-weight: bold;
-    margin-top: 10px;
     display: block;
+    margin-bottom: 5px;
+    font-size: 1.1em;
 }
 
-.sex-label {
-    display: inline;
-}
-
-input, select {
-    width: 100%;
+input {
+    width: 50%;
     padding: 10px;
     margin: 5px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 1em;
+    text-align: center;
 }
 
-input[type="number"],
-input[type="range"],
-input[type="date"] {
-    width: 48%;
-    display: inline-block;
-    margin-right: 4%;
-}
-
-input[type="radio"] {
-    width: 5%;
-    margin-right: 5px;
-}
-
-.input-search {
-    display: inline-block;
-    width: 25%;
-    margin-right: 30px;
-}
-
-.label-search {
-    display: inline-block;
-    margin-right: 323px;
-}
-
-button {
+#btn-battle {
     background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 25px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    display: block;
+    margin: 20px auto;
+    width: 200px;
 }
 
-button:hover {
+#btn-battle:hover {
     background-color: #45a049;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
-    background-color: #f2f2f2;
-    cursor: pointer;
-}
-
-th:hover {
-    background-color: #ddd;
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tr:hover {
-    background-color: #f1f1f1;
-}
-
-dialog {
-    background-color: white;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 600px;
-    max-height: 800px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#btn-close-dialog-heroes {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    font-size: 16px;
-    border-radius: 50%;
-    cursor: pointer;
-    position: absolute;
-    top: 5px;
-    right: 10px;
-}
-
-#btn-close-dialog-heroes:hover {
-    background-color: darkred;
-}
-
-.btn-close {
-    position: absolute;
-    right: 0%;
-    top: 0%;
+#btn-battle:active {
+    background-color: #3e8e41;
 }

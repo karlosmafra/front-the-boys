@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/battle.css">
-    <title>Batalhas</title>
+    <title>Simulador de Batalhas</title>
 </head>
 <body>
     <nav>
@@ -15,6 +15,18 @@
     </nav>
 
     <h1>Simulador de Batalhas</h1>
+
+    <div>
+        <label for="hero1">Herói 1:</label>
+        <input type="text" id="hero1" placeholder="Nome do primeiro herói">
+    </div>
+
+    <div>
+        <label for="hero2">Herói 2:</label>
+        <input type="text" id="hero2" placeholder="Nome do segundo herói">
+    </div>
+
+    <button id="btn-battle" onclick="startBattle()">Iniciar Batalha</button>
 
     <script src="../js/battle.js"></script>
 </body>
